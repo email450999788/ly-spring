@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <ul th:if="${list != null  && not #lists.isEmpty(list)}" >
+    	<li th:each="list:${list}">
+    		<a th:href="@{'/page/list?path='+${list.realValue}}" th:if="${list.file} eq 'false'">
+    			<span th:text="${list.displayValue}"></span>
+    		</a>
+    		<span th:text="${list.displayValue}" th:if="${list.file} eq 'true'"></span>
+    	</li>
+    </ul>
+</body>
+</html>
