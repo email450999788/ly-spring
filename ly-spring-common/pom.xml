@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.1.3.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.liuy.spring.common</groupId>
+	<artifactId>ly-spring-common</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>ly-spring-common</name>
+	<description>ly-spring-common project for Spring Boot</description>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-log4j2</artifactId>
+		</dependency>
+		<!-- log4j2异步日志 -->
+        <dependency>
+            <groupId>com.lmax</groupId>
+			<artifactId>disruptor</artifactId>
+			<version>3.3.7</version>
+        </dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-sleuth</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+	      	<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.41</version>
+		</dependency>
+		<!-- alibaba的druid数据库连接池 -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid-spring-boot-starter</artifactId>
+			<version>1.1.10</version>
+		</dependency>
+		<!-- hive jdbc -->
+		<dependency>
+          <groupId>hive.jdbc-1.1.0-cdh5.16.1</groupId>
+          <artifactId>hadoop-common</artifactId>
+          <scope>system</scope>
+          <systemPath>D:\Program Files\hive-jdbc\hadoop-common-2.6.0-cdh5.16.1.jar</systemPath>
+          <version>2.6.0-cdh5.16.1</version>
+        </dependency>
+		<dependency>
+          <groupId>hive.jdbc-1.1.0-cdh5.16.1</groupId>
+          <artifactId>hive-common</artifactId>
+          <scope>system</scope>
+          <systemPath>D:\Program Files\hive-jdbc\hive-common-1.1.0-cdh5.16.1.jar</systemPath>
+          <version>hive.jdbc-1.1.0-cdh5.16.1</version>
+        </dependency>
+		<dependency>
+          <groupId>hive.jdbc-1.1.0-cdh5.16.1</groupId>
+          <artifactId>hive-jdbc</artifactId>
+          <scope>system</scope>
+          <systemPath>D:\Program Files\hive-jdbc\hive-jdbc-1.1.0-cdh5.16.1.jar</systemPath>
+          <version>hive.jdbc-1.1.0-cdh5.16.1</version>
+        </dependency>
+		<dependency>
+          <groupId>hive.jdbc-1.1.0-cdh5.16.1</groupId>
+          <artifactId>hive-metastore</artifactId>
+          <scope>system</scope>
+          <systemPath>D:\Program Files\hive-jdbc\hive-metastore-1.1.0-cdh5.16.1.jar</systemPath>
+          <version>hive.jdbc-1.1.0-cdh5.16.1</version>
+        </dependency>
+		<dependency>
+          <groupId>hive.jdbc-1.1.0-cdh5.16.1</groupId>
+          <artifactId>hive-service</artifactId>
+          <scope>system</scope>
+          <systemPath>D:\Program Files\hive-jdbc\hive-service-1.1.0-cdh5.16.1.jar</systemPath>
+          <version>hive.jdbc-1.1.0-cdh5.16.1</version>
+        </dependency>
+		<dependency>
+          <groupId>hive.jdbc-1.1.0-cdh5.16.1</groupId>
+          <artifactId>libfb303</artifactId>
+          <scope>system</scope>
+          <systemPath>D:\Program Files\hive-jdbc\libfb303-0.9.3.jar</systemPath>
+          <version>0.9.3</version>
+        </dependency>
+		<dependency>
+          <groupId>hive.jdbc-1.1.0-cdh5.16.1</groupId>
+          <artifactId>libthrift</artifactId>
+          <scope>system</scope>
+          <systemPath>D:\Program Files\hive-jdbc\libthrift-0.9.3.jar</systemPath>
+          <version>0.9.3</version>
+        </dependency>
+		<dependency>
+          <groupId>hive.jdbc-1.1.0-cdh5.16.1</groupId>
+          <artifactId>guava</artifactId>
+          <scope>system</scope>
+          <systemPath>D:\Program Files\hive-jdbc\guava-14.0.1.jar</systemPath>
+          <version>14.0.1</version>
+        </dependency>
+		<dependency>
+          <groupId>org.apache.httpcomponents</groupId>
+          <artifactId>httpcore</artifactId>
+        </dependency>
+		<dependency>
+          <groupId>org.apache.httpcomponents</groupId>
+          <artifactId>httpclient</artifactId>
+        </dependency>
+	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+		</repository>
+	</repositories>
+
+</project>
