@@ -9,10 +9,10 @@
 
 	<Properties>
 		<Property name="LOG_PATTERN">
-			%p~|~%d{yyyy-MM-dd HH:mm:ss:SSS}~|~%X{X-B3-TraceId}~|~%X{X-B3-SpanId}~|~%X{X-B3-ParentSpanId}~|~%X{X-Span-Export}~|~%X{projNo}~|~%X{projName}~|~%X{serverName}~|~%X{tranName}~|~%X{busId}~|~%F(%L)~|~%m~|~%n		
+			%p~|~%d{yyyy-MM-dd HH:mm:ss:SSS}~|~%X{X-B3-TraceId}~|~%X{X-B3-SpanId}~|~%X{X-B3-ParentSpanId}~|~%X{X-Span-Export}~|~%X{projNo}~|~%X{projName}~|~%X{serverName}~|~%X{tranName}~|~%X{busId}~|~%F(%L)~|~%m%n		
 		</Property>
 		<Property name="ELK_LOG_PATTERN">
-			%p~|~%d{yyyy-MM-dd HH:mm:ss:SSS}~|~%X{X-B3-TraceId}~|~%X{X-B3-SpanId}~|~%X{X-B3-ParentSpanId}~|~%X{X-Span-Export}~|~%X{projNo}~|~%X{projName}~|~%X{serverName}~|~%X{tranName}~|~%X{busId}~|~%F(%L)~|~%m~|~%n
+			%p~|~%d{yyyy-MM-dd HH:mm:ss:SSS}~|~%X{X-B3-TraceId}~|~%X{X-B3-SpanId}~|~%X{X-B3-ParentSpanId}~|~%X{X-Span-Export}~|~%X{projNo}~|~%X{projName}~|~%X{serverName}~|~%X{tranName}~|~%X{busId}~|~%F(%L)~|~%m%n
 		</Property> 
 	</Properties>
 
@@ -98,6 +98,7 @@
          
          <Socket name="logstash" host="192.168.163.163" port="9350">
 	     	<PatternLayout pattern="${sys:ELK_LOG_PATTERN}"/>
+	     	<ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
 	     </Socket>
 
      </appenders>
@@ -109,7 +110,10 @@
 
          <logger name="org.springframework" level="WARN"></logger>
          <logger name="com.netflix" level="WARN"></logger>
-         <!-- MYBATIS日志打印 -->
+         <logger name="aaaaa" level="INFO">
+         	<appender-ref ref="logstash"/>
+         </logger>
+         <!-- MYBATIS日志打印-->
          <!-- <logger name="com.ots.hb.mybatis.base" level="DEBUG"></logger> -->
 		 <!-- 异步日志输出 -->
 		 <AsyncLogger name="com.liuy.spring" level="INFO" includeLocation="true">
