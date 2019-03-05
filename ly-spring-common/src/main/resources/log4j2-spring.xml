@@ -110,9 +110,6 @@
 
          <logger name="org.springframework" level="WARN"></logger>
          <logger name="com.netflix" level="WARN"></logger>
-         <logger name="aaaaa" level="INFO">
-         	<appender-ref ref="logstash"/>
-         </logger>
          <!-- MYBATIS日志打印-->
          <!-- <logger name="com.ots.hb.mybatis.base" level="DEBUG"></logger> -->
 		 <!-- 异步日志输出 -->
