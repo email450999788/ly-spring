@@ -18,13 +18,13 @@ import lombok.extern.slf4j.Slf4j;
 @EnableRabbit
 @ComponentScan("com.liuy")
 @Slf4j
-public class LySpringZipkinClient1Application {
+public class LySpringRabbitmqApplication {
 	
 	
 	@Autowired ApplicationContext ctx ;
 
 	public static void main(String[] args) {
-		SpringApplication.run(LySpringZipkinClient1Application.class, args);
+		SpringApplication.run(LySpringRabbitmqApplication.class, args);
 	}
 	
 	
