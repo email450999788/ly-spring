@@ -21,10 +21,13 @@ public class LySpringBootRedisApplicationTests {
     
     @PostConstruct
     public void init(){
-    	System.out.println(redisTemplate.getStringSerializer());
         stringRedis=redisTemplate.opsForValue();
     }
     
+    @Test
+    public void keys (){
+        System.out.println(redisTemplate.keys("*"));
+    }
     
     @Test
     public void setname (){

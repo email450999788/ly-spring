@@ -25,11 +25,14 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import lombok.extern.slf4j.Slf4j;
+
 @SpringBootApplication
 @EnableDiscoveryClient	
 @EnableEurekaClient
 @RestController
 @RequestMapping("/base")
+@Slf4j
 public class LySpringCloudAppWebweatherApplication {
 	
 	@RequestMapping(path="/weather", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -42,10 +45,10 @@ public class LySpringCloudAppWebweatherApplication {
 		CloseableHttpResponse response = null ;
 		try {
 			response = httpclient.execute(httpGet);
-		    System.out.println(response.getStatusLine());
+		    log.info("{}",response.getStatusLine());
 		    HttpEntity entity = response.getEntity();
 		    result = EntityUtils.toString(entity, "UTF-8") ;
-		    System.out.println(result);
+		    log.info("{}",result);
 		    resultJson = JSON.parseObject(result) ;
 		    System.out.println(resultJson);
 		    ObjectMapper mapper = new ObjectMapper();

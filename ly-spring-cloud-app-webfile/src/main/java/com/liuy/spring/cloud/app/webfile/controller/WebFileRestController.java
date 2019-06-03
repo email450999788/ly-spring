@@ -21,6 +21,8 @@ public class WebFileRestController {
 	
 	@RequestMapping(path="/w", method=RequestMethod.GET)
 	public String w() {
+		String str = weather.weather("杭州") ;
+		log.info(str);
 		return weather.weather("杭州") ;
 	}
 	
