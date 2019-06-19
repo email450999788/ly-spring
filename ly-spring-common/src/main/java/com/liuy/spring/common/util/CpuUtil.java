@@ -19,7 +19,6 @@ import org.aspectj.util.FileUtil;
  */
 public class CpuUtil {
     private static final String CPU_INFO_PATH = "/proc/cpuinfo";
-    private static final String CPU_FREQ_NULL = "N/A";
     private static final String CMD_CAT = "/system/bin/cat";
     private static final String CPU_FREQ_CUR_PATH = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq";
     private static final String CPU_FREQ_MAX_PATH = "/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq";
