@@ -29,7 +29,6 @@ import lombok.extern.slf4j.Slf4j;
 
 @SpringBootApplication
 @EnableDiscoveryClient	
-@EnableEurekaClient
 @RestController
 @RequestMapping("/base")
 @Slf4j
