@@ -1,10 +1,5 @@
 package com.liuy.spring.common.elk;
 
-import java.util.Calendar;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.commons.lang3.time.DateFormatUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
@@ -12,8 +7,6 @@ import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -28,6 +21,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ETimePrintAspect {
 	
+	private static ThreadLocal<Long> currentTimeMillis = new ThreadLocal<>() ;
+	
 	@Pointcut("@annotation(eTimePrint)")
 	public void pointCut(ETimePrint eTimePrint) {} 
 	
@@ -37,11 +32,9 @@ public class ETimePrintAspect {
 	 */
 	@Before(value="pointCut(eTimePrint)", argNames="eTimePrint")
 	public void before(JoinPoint jp, ETimePrint eTimePrint) throws Throwable{
-		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest() ;
-		log.info("请求路径:"+request.getRequestURL());
-		long curTime = System.currentTimeMillis() ;
-		request.setAttribute("begin_nao_time", curTime); 
-		log.info("请求开始时间:"+DateFormatUtils.ISO_8601_EXTENDED_DATETIME_FORMAT.format(Calendar.getInstance()));
+		long cur = System.currentTimeMillis() ;
+		log.info("交易处理开始:{}", cur);
+		currentTimeMillis.set(cur);
 	}
 	
 	/**
@@ -50,10 +43,7 @@ public class ETimePrintAspect {
 	 */
 	@After(value="pointCut(eTimePrint)", argNames="eTimePrint")
 	public void after(JoinPoint jp, ETimePrint eTimePrint) throws Throwable{
-		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest() ;
-		Long begin_nao_time =  (Long) request.getAttribute("begin_nao_time"); 
-		long curTime = System.currentTimeMillis() ;
-		log.info("请求结束时间:"+DateFormatUtils.ISO_8601_EXTENDED_DATETIME_FORMAT.format(Calendar.getInstance()));
-        log.info("请求耗时:"+(curTime-begin_nao_time)+"ms");
+		long cur = System.currentTimeMillis() ;
+        log.info("交易处理结束:{},处理总耗时:{}ms", cur, cur-currentTimeMillis.get());
 	}
 }

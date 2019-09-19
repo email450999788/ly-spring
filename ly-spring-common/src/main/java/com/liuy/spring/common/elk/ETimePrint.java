@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
 @Documented
 /**
  * 打印耗时信息
- * @author 刘洋
+ * @author hzhx
  *
  */
 public @interface ETimePrint {
